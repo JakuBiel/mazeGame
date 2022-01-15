@@ -79,9 +79,9 @@ const stepThruCell = (row, column) => {
 
 	//asamble list of neighbor s by co-ordinates
 	const neighbors = shuffle([
-		// [row - 1, column, "up"],
-		// [row, column + 1, "right"],
-		// [row + 1, column, "down"],
+		[row - 1, column, "up"],
+		[row, column + 1, "right"],
+		[row + 1, column, "down"],
 		[row, column - 1, "left"],
 	]);
 
@@ -105,13 +105,19 @@ const stepThruCell = (row, column) => {
 		}
 
 		//*remove a wall from horizontals or verticals
+
 		if (direction === "left") {
 			verticals[row][column - 1] = true;
 		} else if (direction === "right") {
 			verticals[row][column] = true;
+		} else if (direction === "up") {
+			horizontals[row - 1][column] = true;
+		} else if (direction === "down") {
+			horizontals[row][column] = true;
 		}
-	}
 
-	//visit next cell
+		//visit next cell
+		stepThruCell(nextRow, nextColumn);
+	}
 };
 stepThruCell(startRow, startColumn);
