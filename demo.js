@@ -7,7 +7,7 @@ const height = 600;
 const engine = Engine.create();
 const { world } = engine;
 const render = Render.create({
-	element: document.body, //where to draw a world a canvas
+	element: document.querySelector(".game"), //where to draw a world a canvas
 	engine: engine,
 	options: {
 		width: width,
