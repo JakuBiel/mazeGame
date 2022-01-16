@@ -139,11 +139,12 @@ const stepThruCell = (row, column) => {
 	}
 };
 
-document.querySelector(".btn").addEventListener("click", function () {
-	stepThruCell(startRow, startColumn);
-	console.log(startRow, startColumn, stepThruCell);
-});
-// stepThruCell(startRow, startColumn);
+stepThruCell(startRow, startColumn);
+
+// document.querySelector(".btn").addEventListener("click", function () {
+// 	stepThruCell(startRow, startColumn);
+// 	console.log(startRow, startColumn, stepThruCell);
+// });
 
 horizontals.forEach((row, rowIndex) => {
 	row.forEach((open, columnIndex) => {
@@ -265,3 +266,21 @@ Events.on(engine, "collisionStart", (event) => {
 		}
 	});
 });
+
+class Color {
+	constructor(r, g, b, name) {
+		this.r = r;
+		this.g = g;
+		this.b = b;
+		this.name = name;
+	}
+
+	rgb = function () {
+		return `rgb(${this.r},${this.g},${this.b})`;
+	};
+
+	hex = function () {
+		const { r, g, b } = this;
+		return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+	};
+}
