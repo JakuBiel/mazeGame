@@ -138,10 +138,14 @@ const stepThruCell = (row, column) => {
 		stepThruCell(nextRow, nextColumn);
 	}
 };
-stepThruCell(startRow, startColumn);
+
+document.querySelector(".btn").addEventListener("click", function () {
+	stepThruCell(startRow, startColumn);
+	console.log(startRow, startColumn, stepThruCell);
+});
+// stepThruCell(startRow, startColumn);
 
 horizontals.forEach((row, rowIndex) => {
-	// console.log(row);
 	row.forEach((open, columnIndex) => {
 		if (open) {
 			return;
@@ -165,7 +169,6 @@ horizontals.forEach((row, rowIndex) => {
 });
 
 verticals.forEach((row, rowIndex) => {
-	// console.log(row);
 	row.forEach((open, columnIndex) => {
 		if (open) {
 			return;
@@ -206,7 +209,6 @@ const goal = Bodies.rectangle(
 World.add(world, goal);
 
 //Ball
-
 const ball = Bodies.circle(
 	unitLengthX / 2,
 	unitLengthY / 2,
@@ -221,6 +223,7 @@ const ball = Bodies.circle(
 
 World.add(world, ball);
 
+//Ball movement
 document.addEventListener("keydown", (event) => {
 	const { x, y } = ball.velocity;
 
